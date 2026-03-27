@@ -98,7 +98,7 @@ public:
     // Getter: return the owner's name
     string getOwner() const {
         // TODO: Implement
-        return "Alice";
+        return owner_;
     }
 
     // Getter: return the current balance
@@ -123,8 +123,8 @@ public:
     void withdraw(double amount) {
         // TODO: Implement
         if(amount <= 0){
-         throw invalid_argument("transfer amount must be positive");
-         if(balance_< amount){
+             throw invalid_argument("transfer amount must be positive");
+        if(balance_< amount){
              throw runtime_error("Insufficient funds");
           }
          }
@@ -200,6 +200,8 @@ public:
         if (oldPassword !=password_){
             throw invalid_argument("It cannot be the old one.");
         }
+        alidate(newPassword);
+        password_ = newPassword;
     }
 
     // Check if a given string matches the stored password.
