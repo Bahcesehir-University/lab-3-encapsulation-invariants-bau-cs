@@ -89,7 +89,7 @@ public:
           throw invalid_argument("Owner name cannot be empty.");  
         }
         if(initialBalance < 0){
-            throw invalid_argument("Initial balance cannot be less than 0.");  
+            throw invalid_argument("Initial balance cannot be less than zero.");  
         }
         owner_=owner;
         balance_=initialBalance;
@@ -123,11 +123,10 @@ public:
     void withdraw(double amount) {
         // TODO: Implement
         if(amount <= 0){
-         throw invalid_argument("transfer amount must be positive");
+         throw invalid_argument("transfer amount must be positive");}
          if(balance_< amount){
              throw runtime_error("Insufficient funds");
           }
-         }
          balance_ -= amount;
     }
 
@@ -143,9 +142,9 @@ public:
          if(balance_< amount){
             throw runtime_error("Insufficient funds");
         }
-    withdraw(amount);
-    other.deposit(amount);
-    }
+        withdraw(amount);
+        other.deposit(amount);
+        }
 };
 
 // --------------------------------------------------
