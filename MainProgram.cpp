@@ -174,7 +174,7 @@ private:
         // TODO: Check length >= 8 and hasDigit
         // Throw std::invalid_argument with descriptive message if invalid
         if(pwd.length() < 8){
-            throw invalid_argument("Password must be at least 8 charachters");
+            throw invalid_argument("Password must be at least 8 characters");
         }
         if (!hasDigit(pwd)){
             throw invalid_argument("it must be at least one digit");
@@ -199,6 +199,8 @@ public:
         if (oldPassword !=password_){
             throw invalid_argument("It cannot be the old one.");
         }
+        validate(newPassword);
+        password_ = newPassword;
     }
 
     // Check if a given string matches the stored password.
